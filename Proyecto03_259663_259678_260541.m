@@ -13,7 +13,7 @@
 clear; %% Limpiar memoria
 close all; %% Cerrar ventanas abiertas
 clc; %% Limpiar consola
-addpath('programas');
+addpath('programas'); %%Añadir al proyecto el directorio de los programas
 
 %RutaIEntrada = 'C:\Users\alegv\OneDrive\Documentos\Escuela\Tópico I\Proyecto\Proyecto3-TecnicasHistogramas\entradas\'; %% Ruta de entrada (lectura) de las imágenes
 %RutaISalida = 'C:\Users\alegv\OneDrive\Documentos\Escuela\Tópico I\Proyecto\Proyecto3-TecnicasHistogramas\salidas\'; %% Ruta de salida (escritura) de las imágenes
@@ -28,71 +28,89 @@ IContraste2 = imread(strcat(RutaIEntrada, 'ImagenContraste2.jpg')); %% Imagen Po
 IClara1 = imread(strcat(RutaIEntrada, 'ImagenClara1.jpg')); %% Imagen Clara 1
 IClara2 = imread(strcat(RutaIEntrada, 'ImagenClara2.jpg')); %% Imagen Clara 2
 
-%% Variables de la Función
-valmax = 255; %% Valor máximo posible
-k = 0.00035; %% Constante de escalamiento
-tipo = 1; %% Tipo de escalamiento lineal
-c = 1.7; %% Constante de contraste
-b = 50; %% Constante de brillo
-m = 2; %% Exponente
-valIni = 100; %% Rango inicial
-valFin = 200; %% Rango final
+%% Variables de la Función para las Imágenes Obscuras
+valmaxObscura = 255; %% Valor máximo posible
+kObscura = 0.00035; %% Constante de escalamiento
+tipoObscura = 1; %% Tipo de escalamiento lineal
+cObscura = 1.7; %% Constante de contraste
+bObscura = 50; %% Constante de brillo
+mObscura = 2; %% Exponente
+valIniObscura = 100; %% Rango inicial
+valFinObscura = 200; %% Rango final
+%% Variables de la Función para las Imágenes Contrastantes
+valmaxContraste = 255; %% Valor máximo posible
+kContraste = 0.00035; %% Constante de escalamiento
+tipoContraste = 1; %% Tipo de escalamiento lineal
+cContraste = 1.7; %% Constante de contraste
+bContraste = 50; %% Constante de brillo
+mContraste = 2; %% Exponente
+valIniContraste = 100; %% Rango inicial
+valFinContraste = 200; %% Rango final
+%% Variables de la Función para las Imágenes Claras
+valmaxClara = 255; %% Valor máximo posible
+kClara = 0.00035; %% Constante de escalamiento
+tipoClara = 1; %% Tipo de escalamiento lineal
+cClara = 1.7; %% Constante de contraste
+bClara = 50; %% Constante de brillo
+mClara = 2; %% Exponente
+valIniClara = 100; %% Rango inicial
+valFinClara = 200; %% Rango final
 
 %% Técnicas de Histogramas probadas en cada Imagen
 %% Imagen Obscura 1
-TecnicasHistograma(IObscura1, 0, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Generación de su Histograma
-Obscura1Lineal = TecnicasHistograma(IObscura1, 1, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Escalamiento Lineal
-Obscura1ContrasteBrillo = TecnicasHistograma(IObscura1, 2, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Contraste y Brillo
-Obscura1NoLineal = TecnicasHistograma(IObscura1, 3, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Escalamiento No Lineal
-Obscura1CorreccionRadiometrica = TecnicasHistograma(IObscura1, 4, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Correción Radiométrica
-Obscura1Autoescalamiento = TecnicasHistograma(IObscura1, 5, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Autoescalamiento
-Obscura1Ecualizar = TecnicasHistograma(IObscura1, 6, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Ecualización
-Obscura1Especificar = TecnicasHistograma(IObscura1, 7, "Primera Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 1 con Técnica de Especificación
+TecnicasHistograma(IObscura1, 0, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Generación de su Histograma
+Obscura1Lineal = TecnicasHistograma(IObscura1, 1, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Escalamiento Lineal
+Obscura1ContrasteBrillo = TecnicasHistograma(IObscura1, 2, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Contraste y Brillo
+Obscura1NoLineal = TecnicasHistograma(IObscura1, 3, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Escalamiento No Lineal
+Obscura1CorreccionRadiometrica = TecnicasHistograma(IObscura1, 4, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Correción Radiométrica
+Obscura1Autoescalamiento = TecnicasHistograma(IObscura1, 5, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Autoescalamiento
+Obscura1Ecualizar = TecnicasHistograma(IObscura1, 6, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Ecualización
+Obscura1Especificar = TecnicasHistograma(IObscura1, 7, "Primera Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 1 con Técnica de Especificación
 %% Imagen Obscura 2
-TecnicasHistograma(IObscura2, 0, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Generación de su Histograma
-Obscura2Lineal = TecnicasHistograma(IObscura2, 1, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Escalamiento Lineal
-Obscura2ContrasteBrillo = TecnicasHistograma(IObscura2, 2, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Contraste y Brillo
-Obscura2NoLineal = TecnicasHistograma(IObscura2, 3, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Escalamiento No Lineal
-Obscura2CorreccionRadiometrica = TecnicasHistograma(IObscura2, 4, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Correción Radiométrica
-Obscura2Autoescalamiento = TecnicasHistograma(IObscura2, 5, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Autoescalamiento
-Obscura2Ecualizar = TecnicasHistograma(IObscura2, 6, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Ecualización
-Obscura2Especificar = TecnicasHistograma(IObscura2, 7, "Segunda Imagen Obscura", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Obscura 2 con Técnica de Especificación
+TecnicasHistograma(IObscura2, 0, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Generación de su Histograma
+Obscura2Lineal = TecnicasHistograma(IObscura2, 1, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Escalamiento Lineal
+Obscura2ContrasteBrillo = TecnicasHistograma(IObscura2, 2, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Contraste y Brillo
+Obscura2NoLineal = TecnicasHistograma(IObscura2, 3, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Escalamiento No Lineal
+Obscura2CorreccionRadiometrica = TecnicasHistograma(IObscura2, 4, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Correción Radiométrica
+Obscura2Autoescalamiento = TecnicasHistograma(IObscura2, 5, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Autoescalamiento
+Obscura2Ecualizar = TecnicasHistograma(IObscura2, 6, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Ecualización
+Obscura2Especificar = TecnicasHistograma(IObscura2, 7, "Segunda Imagen Obscura", valmaxObscura, kObscura, tipoObscura, cObscura, bObscura, mObscura, valIniObscura, valFinObscura); %% Imagen Obscura 2 con Técnica de Especificación
 %% Imagen Contraste 1
-TecnicasHistograma(IContraste1, 0, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Generación de su Histograma
-Contraste1Lineal = TecnicasHistograma(IContraste1, 1, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Escalamiento Lineal
-Contraste1ContrasteBrillo = TecnicasHistograma(IContraste1, 2, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Contraste y Brillo
-Contraste1NoLineal = TecnicasHistograma(IContraste1, 3, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Escalamiento No Lineal
-Contraste1CorreccionRadiometrica = TecnicasHistograma(IContraste1, 4, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Correción Radiométrica
-Contraste1Autoescalamiento = TecnicasHistograma(IContraste1, 5, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Autoescalamiento
-Contraste1Ecualizar = TecnicasHistograma(IContraste1, 6, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Ecualización
-Contraste1Especificar = TecnicasHistograma(IContraste1, 7, "Primera Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 1 con Técnica de Especificación
+TecnicasHistograma(IContraste1, 0, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Generación de su Histograma
+Contraste1Lineal = TecnicasHistograma(IContraste1, 1, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Escalamiento Lineal
+Contraste1ContrasteBrillo = TecnicasHistograma(IContraste1, 2, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Contraste y Brillo
+Contraste1NoLineal = TecnicasHistograma(IContraste1, 3, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Escalamiento No Lineal
+Contraste1CorreccionRadiometrica = TecnicasHistograma(IContraste1, 4, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Correción Radiométrica
+Contraste1Autoescalamiento = TecnicasHistograma(IContraste1, 5, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Autoescalamiento
+Contraste1Ecualizar = TecnicasHistograma(IContraste1, 6, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Ecualización
+Contraste1Especificar = TecnicasHistograma(IContraste1, 7, "Primera Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 1 con Técnica de Especificación
 %% Imagen Contraste 2
-TecnicasHistograma(IContraste2, 0, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Generación de su Histograma
-Contraste2Lineal = TecnicasHistograma(IContraste2, 1, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Escalamiento Lineal
-Contraste2ContrasteBrillo = TecnicasHistograma(IContraste2, 2, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Contraste y Brillo
-Contraste2NoLineal = TecnicasHistograma(IContraste2, 3, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Escalamiento No Lineal
-Contraste2CorreccionRadiometrica = TecnicasHistograma(IContraste2, 4, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Correción Radiométrica
-Contraste2Autoescalamiento = TecnicasHistograma(IContraste2, 5, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Autoescalamiento
-Contraste2Ecualizar = TecnicasHistograma(IContraste2, 6, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Ecualización
-Contraste2Especificar = TecnicasHistograma(IContraste2, 7, "Segunda Imagen Contraste", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Contraste 2 con Técnica de Especificación
+TecnicasHistograma(IContraste2, 0, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Generación de su Histograma
+Contraste2Lineal = TecnicasHistograma(IContraste2, 1, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Escalamiento Lineal
+Contraste2ContrasteBrillo = TecnicasHistograma(IContraste2, 2, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Contraste y Brillo
+Contraste2NoLineal = TecnicasHistograma(IContraste2, 3, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Escalamiento No Lineal
+Contraste2CorreccionRadiometrica = TecnicasHistograma(IContraste2, 4, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Correción Radiométrica
+Contraste2Autoescalamiento = TecnicasHistograma(IContraste2, 5, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Autoescalamiento
+Contraste2Ecualizar = TecnicasHistograma(IContraste2, 6, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Ecualización
+Contraste2Especificar = TecnicasHistograma(IContraste2, 7, "Segunda Imagen Contraste", valmaxContraste, kContraste, tipoContraste, cContraste, bContraste, mContraste, valIniContraste, valFinContraste); %% Imagen Contraste 2 con Técnica de Especificación
 %% Imagen Clara 1
-TecnicasHistograma(IClara1, 0, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Generación de su Histograma
-Clara1Lineal = TecnicasHistograma(IClara1, 1, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Escalamiento Lineal
-Clara1ContrasteBrillo = TecnicasHistograma(IClara1, 2, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Contraste y Brillo
-Clara1NoLineal = TecnicasHistograma(IClara1, 3, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Escalamiento No Lineal
-Clara1CorreccionRadiometrica = TecnicasHistograma(IClara1, 4, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Correción Radiométrica
-Clara1Autoescalamiento = TecnicasHistograma(IClara1, 5, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Autoescalamiento
-Clara1Ecualizar = TecnicasHistograma(IClara1, 6, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Ecualización
-Clara1Especificar = TecnicasHistograma(IClara1, 7, "Primera Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 1 con Técnica de Especificación
+TecnicasHistograma(IClara1, 0, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Generación de su Histograma
+Clara1Lineal = TecnicasHistograma(IClara1, 1, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Escalamiento Lineal
+Clara1ContrasteBrillo = TecnicasHistograma(IClara1, 2, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Contraste y Brillo
+Clara1NoLineal = TecnicasHistograma(IClara1, 3, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Escalamiento No Lineal
+Clara1CorreccionRadiometrica = TecnicasHistograma(IClara1, 4, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Correción Radiométrica
+Clara1Autoescalamiento = TecnicasHistograma(IClara1, 5, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Autoescalamiento
+Clara1Ecualizar = TecnicasHistograma(IClara1, 6, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Ecualización
+Clara1Especificar = TecnicasHistograma(IClara1, 7, "Primera Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 1 con Técnica de Especificación
 %% Imagen Clara 2
-TecnicasHistograma(IClara2, 0, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Generación de su Histograma
-Clara2Lineal = TecnicasHistograma(IClara2, 1, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Escalamiento Lineal
-Clara2ContrasteBrillo = TecnicasHistograma(IClara2, 2, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Contraste y Brillo
-Clara2NoLineal = TecnicasHistograma(IClara2, 3, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Escalamiento No Lineal
-Clara2CorreccionRadiometrica = TecnicasHistograma(IClara2, 4, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Correción Radiométrica
-Clara2Autoescalamiento = TecnicasHistograma(IClara2, 5, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Autoescalamiento
-Clara2Ecualizar = TecnicasHistograma(IClara2, 6, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Ecualización
-Clara2Especificar = TecnicasHistograma(IClara2, 7, "Segunda Imagen Clara", valmax, k, tipo, c, b, m, valIni, valFin); %% Imagen Clara 2 con Técnica de Especificación
+TecnicasHistograma(IClara2, 0, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Generación de su Histograma
+Clara2Lineal = TecnicasHistograma(IClara2, 1, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Escalamiento Lineal
+Clara2ContrasteBrillo = TecnicasHistograma(IClara2, 2, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Contraste y Brillo
+Clara2NoLineal = TecnicasHistograma(IClara2, 3, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Escalamiento No Lineal
+Clara2CorreccionRadiometrica = TecnicasHistograma(IClara2, 4, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Correción Radiométrica
+Clara2Autoescalamiento = TecnicasHistograma(IClara2, 5, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Autoescalamiento
+Clara2Ecualizar = TecnicasHistograma(IClara2, 6, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Ecualización
+Clara2Especificar = TecnicasHistograma(IClara2, 7, "Segunda Imagen Clara", valmaxClara, kClara, tipoClara, cClara, bClara, mClara, valIniClara, valFinClara); %% Imagen Clara 2 con Técnica de Especificación
 
 
 %% Despliegue de las imágenes
