@@ -13,10 +13,7 @@
 clear; %% Limpiar memoria
 close all; %% Cerrar ventanas abiertas
 clc; %% Limpiar consola
-addpath('programas'); %%Añadir al proyecto el directorio de los programas
-
-%RutaIEntrada = 'C:\Users\alegv\OneDrive\Documentos\Escuela\Tópico I\Proyecto\Proyecto3-TecnicasHistogramas\entradas\'; %% Ruta de entrada (lectura) de las imágenes
-%RutaISalida = 'C:\Users\alegv\OneDrive\Documentos\Escuela\Tópico I\Proyecto\Proyecto3-TecnicasHistogramas\salidas\'; %% Ruta de salida (escritura) de las imágenes
+addpath('programas'); %% Añadir al proyecto el directorio de los programas
 
 RutaIEntrada = 'C:\entradas\'; %% Ruta de entrada (lectura) de las imágenes
 RutaISalida = 'C:\salidas\'; %% Ruta de salida (escritura) de las imágenes
@@ -30,30 +27,30 @@ IClara2 = imread(strcat(RutaIEntrada, 'ImagenClara2.jpg')); %% Imagen Clara 2
 
 %% Variables de la Función para las Imágenes Obscuras
 valmaxObscura = 255; %% Valor máximo posible
-kObscura = 0.00035; %% Constante de escalamiento
+kObscura = 0.25; %% Constante de escalamiento
 tipoObscura = 1; %% Tipo de escalamiento lineal
-cObscura = 1.7; %% Constante de contraste
-bObscura = 50; %% Constante de brillo
-mObscura = 2; %% Exponente
+cObscura = 3; %% Constante de contraste
+bObscura = 150; %% Constante de brillo
+mObscura = 1/4; %% Exponente
 valIniObscura = 100; %% Rango inicial
-valFinObscura = 200; %% Rango final
+valFinObscura = 250; %% Rango final
 %% Variables de la Función para las Imágenes Contrastantes
 valmaxContraste = 255; %% Valor máximo posible
-kContraste = 0.00035; %% Constante de escalamiento
+kContraste = 0.15; %% Constante de escalamiento
 tipoContraste = 1; %% Tipo de escalamiento lineal
-cContraste = 1.7; %% Constante de contraste
-bContraste = 50; %% Constante de brillo
-mContraste = 2; %% Exponente
-valIniContraste = 100; %% Rango inicial
-valFinContraste = 200; %% Rango final
+cContraste = 2; %% Constante de contraste
+bContraste = 0; %% Constante de brillo
+mContraste = 1/3; %% Exponente
+valIniContraste = 50; %% Rango inicial
+valFinContraste = 250; %% Rango final
 %% Variables de la Función para las Imágenes Claras
 valmaxClara = 255; %% Valor máximo posible
 kClara = 0.00035; %% Constante de escalamiento
 tipoClara = 1; %% Tipo de escalamiento lineal
-cClara = 1.7; %% Constante de contraste
-bClara = 50; %% Constante de brillo
+cClara = 0.6; %% Constante de contraste
+bClara = -5; %% Constante de brillo
 mClara = 2; %% Exponente
-valIniClara = 100; %% Rango inicial
+valIniClara = 50; %% Rango inicial
 valFinClara = 200; %% Rango final
 
 %% Técnicas de Histogramas probadas en cada Imagen
@@ -199,7 +196,6 @@ imwrite(Obscura2CorreccionRadiometrica, strcat(RutaISalida, 'Obscura2_Correccion
 imwrite(Obscura2Autoescalamiento, strcat(RutaISalida, 'Obscura2_Autoescalamiento.jpg')); %% Almacenar Imagen Obscura 2 con Autoescalamiento
 imwrite(Obscura2Ecualizar, strcat(RutaISalida, 'Obscura2_Ecualizar.jpg')); %% Almacenar Imagen Obscura 2 con Ecualización 
 imwrite(Obscura2Especificar, strcat(RutaISalida, 'Obscura2_Especificar.jpg')); %% Almacenar Imagen Obscura 2 con Especificación
-
 %% Imagen Contraste 1
 imwrite(Contraste1Lineal, strcat(RutaISalida, 'Contraste1_Lineal.jpg')); %% Almacenar Imagen Contraste 1 con Escalamiento Lineal
 imwrite(Contraste1ContrasteBrillo, strcat(RutaISalida, 'Contraste1_ContrasteBrillo.jpg')); %% Almacenar Imagen Contraste 1 con Contraste y Brillo

@@ -1,7 +1,7 @@
 %% Escalamiento lineal de la imagen
 %% Entradas
-%% I Imagen de entrada
-%% k constante de escalamiento
+%% I - Imagen de entrada
+%% k - constante de escalamiento
 %% tipo 1- Por renglones
 %%      2- Por columna
 %%      3- Esquina (inf. derecha)

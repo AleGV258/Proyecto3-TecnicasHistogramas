@@ -15,40 +15,49 @@ function [ImagenHistograma] = TecnicasHistograma(I, tecnica, nombreHistograma, v
     tic;
     switch tecnica
         case 0
+            fprintf("Histograma - %s \n", nombreHistograma);
             ImagenHistograma = I;
             histograma = generarHist(I, valmax); %% Generar Histograma de la Imagen Original
             graficarHist(histograma, 1, strcat("de la Imagen Original - ", nombreHistograma)); %% Gráficar Histograma de la Imagen Original
         case 1
+            fprintf("Escalamiento Lineal - %s \n", nombreHistograma);
             ImagenHistograma = escalLineal(I, k, tipo, valmax); %% Técnica de Escalamiento Lineal
             histogramaEscalLineal = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaEscalLineal, 1, strcat("del Escalamiento Lineal - ", nombreHistograma)); %% Gráficar Histograma
         case 2
+            fprintf("Contraste y Brillo - %s \n", nombreHistograma);
             ImagenHistograma = escalContyBrillo(I, c, b, valmax); %% Técnica de Escalamiento de Contraste y Brillo
             histogramaEscalContyBrillo = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaEscalContyBrillo, 1, strcat("del Escalamiento de Contraste y Brillo - ", nombreHistograma)); %% Gráficar Histograma
         case 3
+            fprintf("Escalamiento No Lineal - %s \n", nombreHistograma);
             ImagenHistograma = escalNoLineal(I, valmax); %% Técnica de Escalamiento No Lineal
             histogramaEscalNoLineal = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaEscalNoLineal, 1, strcat("del Escalamiento No Lineal - ", nombreHistograma)); %% Gráficar Histograma
         case 4
+            fprintf("Corrección Radiométrica - %s \n", nombreHistograma);
             ImagenHistograma = correccRadiom(I, m, valmax); %% Técnica de Corrección Radiométrica
             histogramaCorreccRadiom = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaCorreccRadiom, 1, strcat("de la Corrección Radiométrica - ", nombreHistograma)); %% Gráficar Histograma
         case 5
+            fprintf("Autoescalamiento - %s \n", nombreHistograma);
             ImagenHistograma = autoEscalar(I, valmax); %% Técnica de Autoescalar
             histogramaAutoEscalar = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaAutoEscalar, 1, strcat("del Autoescalamiento - ", nombreHistograma)); %% Gráficar Histograma
         case 6
+            fprintf("Ecualizar - %s \n", nombreHistograma);
             histograma = generarHist(I, valmax); %% Generar Histograma de la Imagen Original
             ImagenHistograma = ecualizar(I, histograma, valmax); %% Técnica de Ecualizar
             histogramaEcualizar = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaEcualizar, 1, strcat("de Ecualizar - ", nombreHistograma)); %% Gráficar Histograma
         case 7
+            fprintf("Especificar - %s \n", nombreHistograma);
             ImagenHistograma = especifHist(I, valIni, valFin, valmax); %% Técnica de Especificación
             histogramaEspecifHist = generarHist(ImagenHistograma, valmax); %% Generar Histograma
             graficarHist(histogramaEspecifHist, 1, strcat("de Especificar - ", nombreHistograma)); %% Gráficar Histograma 
     end
-
+    
     ImagenHistograma = uint8(ImagenHistograma);
     toc;
+    fprintf("\n");
 end
